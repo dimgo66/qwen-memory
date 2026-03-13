@@ -1,11 +1,22 @@
 # Игнорируем временные и локальные файлы
 tmp/
 debug/
+projects/
+todos/
+commands/
 *.log
 .DS_Store
 
 # OAuth токены (безопасность!)
 oauth_creds.json
+user-profile.json
 
 # Локальные настройки
 installation_id
+
+# Временные файлы синхронизации
+*.csv
+memory-backup-*.tar.gz
+PROMPT
+SESSION_CONTEXT.md
+output-language.md
