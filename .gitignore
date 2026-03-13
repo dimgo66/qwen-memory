@@ -3,7 +3,6 @@ tmp/
 debug/
 projects/
 todos/
-commands/
 *.log
 .DS_Store
 
@@ -20,3 +19,6 @@ memory-backup-*.tar.gz
 PROMPT
 SESSION_CONTEXT.md
 output-language.md
+
+# PowerShell (игнорируем профили)
+Microsoft.PowerShell*.ps1
