@@ -14,7 +14,41 @@
 - ✅ `mcp.json` — MCP серверы
 - ✅ `settings.json` — настройки
 - ✅ `skills/` — навыки (28 файлов)
-- ✅ Скрипты (`*.sh`)
+- ✅ Скрипты для macOS/Linux и Windows
+
+---
+
+## 🖥️ Платформы
+
+### macOS / Linux
+
+```bash
+# Сохранить в память (с автосинхронизацией)
+/remember "факт"
+
+# Или через терминал
+qwen-remember "факт"
+
+# Синхронизировать вручную
+qwen-sync
+```
+
+### Windows
+
+**Требуется:** [Git for Windows](https://git-scm.com/download/win) + [PostgreSQL](https://www.postgresql.org/download/windows/)
+
+```powershell
+# В PowerShell (с автосинхронизацией)
+.\remember.ps1 "факт"
+
+# В Git Bash
+~/.qwen/commands/remember.sh "факт"
+
+# Синхронизировать вручную
+.\sync-memory.ps1
+```
+
+📚 **Подробная инструкция:** см. [WINDOWS_SETUP.md](WINDOWS_SETUP.md)
 
 ---
 
@@ -23,11 +57,12 @@
 ### После изменений в памяти:
 
 ```bash
-# Быстрая синхронизация
+# Обычно не нужно — автосинхронизация работает
+# Но если нужно вручную:
 qwen-sync
 
-# Или вручную
-cd ~/.qwen && git add . && git commit -m "Update memory" && git push
+# Или
+cd ~/.qwen && git add . && git commit -m "Update" && git push
 ```
 
 ### На другом компьютере:
@@ -43,22 +78,22 @@ git clone https://github.com/dimgo66/qwen-memory.git ~/.qwen
 
 ## 📊 Команды
 
-| Команда | Описание |
-|---------|----------|
-| `qwen-sync` | Синхронизация с GitHub |
-| `qwen-remember "факт"` | Сохранить в память |
-| `qwen-backup` | Создать локальный бэкап |
+| Платформа | Команда | Описание |
+|-----------|---------|----------|
+| **macOS/Linux** | `qwen-remember "факт"` | Сохранить в память |
+| **Windows** | `.\remember.ps1 "факт"` | Сохранить в память |
+| **Все** | `qwen-sync` / `.\sync-memory.ps1` | Синхронизация |
 
 ---
 
 ## 🔄 Автоматизация
 
-Добавьте в `~/.bash_profile`:
+**При использовании `/remember` или `qwen-remember`:**
+- ✅ Сохранение в PostgreSQL
+- ✅ Обновление QWEN.md
+- ✅ Git коммит и пуш на GitHub
 
-```bash
-# Автосинхронизация при сохранении
-alias qwen-remember='/Users/mac/.qwen/commands/remember.sh "$1" && qwen-sync'
-```
+**Всё автоматически!**
 
 ---
 
