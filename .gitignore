@@ -1,0 +1,11 @@
+# Игнорируем временные и локальные файлы
+tmp/
+debug/
+*.log
+.DS_Store
+
+# OAuth токены (безопасность!)
+oauth_creds.json
+
+# Локальные настройки
+installation_id

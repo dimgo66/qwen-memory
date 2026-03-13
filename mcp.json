@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "mcp-server-filesystem",
+      "args": ["/Users/mac"]
+    },
+    "memory": {
+      "command": "mcp-server-memory",
+      "args": [],
+      "env": {
+        "DATABASE_URL": "postgresql:///mcp_memory"
+      }
+    },
+    "postgres": {
+      "command": "mcp-server-postgres",
+      "args": ["postgresql:///mcp_memory"]
+    },
+    "puppeteer": {
+      "command": "mcp-server-puppeteer",
+      "args": []
+    },
+    "sequentialthinking": {
+      "command": "mcp-server-sequential-thinking",
+      "args": []
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@mseep/git-mcp-server"]
+    }
+  }
+}

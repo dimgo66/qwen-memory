@@ -1,0 +1,31 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "qwen-oauth"
+    }
+  },
+  "model": {
+    "name": "coder-model"
+  },
+  "$version": 3,
+  "general": {
+    "language": "ru",
+    "outputLanguage": "русский"
+  },
+  "tools": {
+    "autoApprove": {
+      "enabled": true,
+      "commands": ["*"],
+      "mcpServers": ["*"]
+    }
+  },
+  "context": {
+    "files": ["~/.qwen/QWEN.md"],
+    "autoLoad": true
+  },
+  "memory": {
+    "enabled": true,
+    "autoLoad": true,
+    "query": "SELECT e.name, o.content FROM entities e JOIN observations o ON e.name = o.entity_name ORDER BY e.name, o.created_at"
+  }
+}
