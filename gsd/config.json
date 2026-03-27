@@ -1,0 +1,40 @@
+{
+  "version": "1.29.0",
+  "adapted_for": "Qwen Code",
+  "planning": {
+    "directory": ".planning",
+    "files": {
+      "project": "PROJECT.md",
+      "requirements": "REQUIREMENTS.md",
+      "roadmap": "ROADMAP.md",
+      "state": "STATE.md",
+      "config": "config.json"
+    }
+  },
+  "workflow": {
+    "auto_commit": true,
+    "auto_push": false,
+    "prompt_before_phase": true,
+    "prompt_before_ship": true
+  },
+  "commands": {
+    "prefix": "gsd:",
+    "available": [
+      "new-project",
+      "discuss-phase",
+      "plan-phase",
+      "execute-phase",
+      "verify-work",
+      "ship",
+      "progress",
+      "help",
+      "quick"
+    ]
+  },
+  "templates": {
+    "project": "~/.qwen/gsd/templates/project.md",
+    "requirements": "~/.qwen/gsd/templates/requirements.md",
+    "roadmap": "~/.qwen/gsd/templates/roadmap.md",
+    "state": "~/.qwen/gsd/templates/state.md"
+  }
+}
