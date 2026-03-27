@@ -15,17 +15,44 @@
   "tools": {
     "autoApprove": {
       "enabled": true,
-      "commands": ["*"],
-      "mcpServers": ["*"]
+      "commands": [
+        "*"
+      ],
+      "mcpServers": [
+        "*"
+      ]
     }
   },
   "context": {
-    "files": ["~/.qwen/QWEN.md"],
+    "files": [
+      "~/.qwen/QWEN.md"
+    ],
     "autoLoad": true
   },
   "memory": {
     "enabled": true,
     "autoLoad": true,
     "query": "SELECT e.name, o.content FROM entities e JOIN observations o ON e.name = o.entity_name ORDER BY e.name, o.created_at"
+  },
+  "ui": {
+    "feedbackLastShownTimestamp": 1774306848229
+  },
+  "ide": {
+    "hasSeenNudge": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git clone *)",
+      "Bash(open *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push)",
+      "Read(//Volumes/Store1/Yandex.Disk.localized/Вторник/vtornik-vue/**)",
+      "Bash(npm install)",
+      "Bash(mkdir *)",
+      "Bash(git init)",
+      "Bash(docker-compose *)",
+      "WebFetch(github.com)"
+    ]
   }
 }
