@@ -1,6 +1,19 @@
 # GSD для Qwen Code
 
-Адаптированная версия Get Shit Done v1.29.0 для Qwen Code.
+Адаптированная версия Get Shit Done v1.29.0 для Qwen Code с практиками **Superpowers**.
+
+## 🆕 Superpowers Integration
+
+**GSD + Superpowers** — лучшие практики разработки:
+
+| Практика | Описание | Реализация |
+|----------|----------|------------|
+| **TDD** | Сначала тесты, всегда | `gsd:execute-phase` — RED-GREEN-REFACTOR |
+| **Code Review** | Обязательное ревью перед ship | `gsd:ship` — automatic review |
+| **Requirements Spec** | Уточнение требований до плана | `gsd:requirements-spec N` |
+| **Verification** | Проверка перед завершением | `gsd:verify-work` — checklist |
+
+---
 
 ## Автоматическое подключение MCP/Skills
 

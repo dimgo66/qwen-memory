@@ -2,22 +2,35 @@
 
 ## Установка завершена ✓
 
-GSD адаптирован для работы с Qwen Code в ручном режиме.
+GSD адаптирован для работы с Qwen Code в ручном режиме с практиками **Superpowers**.
+
+## 🆕 Superpowers Integration
+
+**Встроенные практики:**
+
+1. **TDD (Test-Driven Development)** — сначала тесты, потом код
+2. **Code Review** — обязательное ревью перед `gsd:ship`
+3. **Requirements Spec** — уточнение требований до планирования
+4. **Verification Before Completion** — чеклист перед завершением
 
 ## Структура
 
 ```
 ~/.qwen/gsd/
 ├── README.md           — Эта инструкция
+├── INSTRUCTION.md      — Полная инструкция
 ├── config.json         — Конфигурация
 ├── workflows/          — Воркфлоу команд
 │   ├── new-project.md
+│   ├── requirements-spec.md  ← Уточнение требований
+│   ├── discuss-phase.md
+│   ├── plan-phase.md
+│   ├── execute-phase.md      ← TDD RED-GREEN-REFACTOR
+│   ├── verify-work.md        ← Verification checklist
+│   ├── ship.md               ← Code review перед ship
 │   ├── help.md
 │   ├── progress.md
-│   ├── plan-phase.md
-│   ├── execute-phase.md
-│   ├── verify-work.md
-│   └── ship.md
+│   └── ...
 └── templates/          — Шаблоны файлов
     ├── project.md
     ├── requirements.md
@@ -72,10 +85,12 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 | Команда | Описание |
 |---------|----------|
 | `gsd:new-project` | Инициализация проекта |
+| `gsd:requirements-spec 1` | **Уточнение требований** фазы 1 |
+| `gsd:discuss-phase 1` | Обсуждение деталей фазы 1 |
 | `gsd:plan-phase 1` | Планирование фазы 1 |
-| `gsd:execute-phase 1` | Выполнение фазы 1 |
-| `gsd:verify-work` | Проверка работы (UAT) |
-| `gsd:ship` | Завершение и публикация |
+| `gsd:execute-phase 1` | Выполнение фазы 1 **(TDD)** |
+| `gsd:verify-work` | Проверка работы (UAT + Verification) |
+| `gsd:ship` | Завершение и публикация **(с code review)** |
 | `gsd:progress` | Показать текущий статус |
 | `gsd:help` | Показать все команды |
 | `gsd:quick: [задача]` | Быстрая задача |
@@ -87,17 +102,20 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 Я: Задаю вопросы о проекте...
    Создаю .planning/PROJECT.md, REQUIREMENTS.md, ROADMAP.md...
 
+Вы: gsd:requirements-spec 1
+Я: Уточняю требования, создаю acceptance criteria, тест-кейсы...
+
 Вы: gsd:plan-phase 1
 Я: Читаю ROADMAP.md, создаю детальные планы...
 
 Вы: gsd:execute-phase 1
-Я: Выполняю планы, обновляю STATE.md...
+Я: TDD цикл (RED → GREEN → REFACTOR), обновляю STATE.md...
 
 Вы: gsd:verify-work
-Я: Проверяю по критериям успеха...
+Я: Проверяю по критериям успеха, запускаю тесты, чеклист...
 
 Вы: gsd:ship
-Я: Создаю коммит, обновляю статусы...
+Я: Code review, создаю коммит, обновляю статусы...
 ```
 
 ## Файлы проекта

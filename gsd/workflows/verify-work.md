@@ -1,13 +1,15 @@
 # gsd:verify-work
 
-Проверка выполненной работы (UAT).
+Проверка выполненной работы (UAT + Verification Before Completion).
 
 ## Что делает
 
 1. Сравнивает результат с требованиями
 2. Проверяет success criteria
-3. Выявляет проблемы
-4. Готовит отчёт о верификации
+3. **Запускает полный тест-сьют**
+4. **Проверяет качество кода**
+5. Выявляет проблемы
+6. Готовит отчёт о верификации
 
 ## Как использовать
 
@@ -26,6 +28,26 @@ gsd:verify-work 1
 - PROJECT.md — требования
 - ROADMAP.md — success criteria фазы
 - STATE.md — что выполнено
+- **REQUIREMENTS.md — acceptance criteria**
+
+### Шаг 1.5: Автоматическая верификация
+
+**Запуск тестов:**
+```bash
+npm test          # или pytest, jest, etc.
+npm test:coverage # проверка покрытия
+```
+
+**Требования к тестам:**
+- ✅ Все тесты PASS
+- ✅ Покрытие ≥ 80% (критичные модули ≥ 90%)
+- ✅ Нет skipped тестов без причин
+
+**Проверка качества:**
+```bash
+npm run lint      # ESLint/Prettier
+npm run typecheck # TypeScript
+```
 
 ### Шаг 2: Проверка по критериям
 
@@ -59,6 +81,18 @@ gsd:verify-work 1
 - Исправить Issue 1, 2
 - Перепроверить
 ```
+
+### Шаг 3.5: Verification Checklist
+
+**Перед отметкой "готово":**
+- [ ] Все acceptance criteria из REQUIREMENTS.md проверены
+- [ ] Все тесты PASS (100% зелёные)
+- [ ] Тестовое покрытие ≥ 80%
+- [ ]Lint проходит без ошибок
+- [ ] TypeScript компилируется без ошибок
+- [ ] Нет console.error/console.warn в логах
+- [ ] Производительность в норме (no memory leaks, slow queries)
+- [ ] Безопасность проверена (no hardcoded secrets, SQL injection risks)
 
 ### Шаг 4: Решение
 
