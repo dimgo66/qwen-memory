@@ -1,6 +1,6 @@
 # GSD для Qwen Code
 
-Адаптированная версия Get Shit Done v1.29.0 для Qwen Code с практиками **Superpowers**.
+Адаптированная версия Get Shit Done v1.29.0 для Qwen Code с практиками **Superpowers** и **Beads**.
 
 ## 🆕 Superpowers Integration
 
@@ -12,6 +12,19 @@
 | **Code Review** | Обязательное ревью перед ship | `gsd:ship` — automatic review |
 | **Requirements Spec** | Уточнение требований до плана | `gsd:requirements-spec N` |
 | **Verification** | Проверка перед завершением | `gsd:verify-work` — checklist |
+
+---
+
+## 🆕 Beads Integration
+
+**GSD + Beads** — графовый трекер задач:
+
+| Практика | Описание | Реализация |
+|----------|----------|------------|
+| **Dependency Graph** | Граф зависимостей между планами | `gsd:dependency-graph N` |
+| **Ready Check** | Авто-определение готовых планов | `gsd:ready` |
+| **Hash-based ID** | Уникальные ID планов | `01-01.a3f8` |
+| **Compaction** | Архивация с суммаризацией | `gsd:compact N` |
 
 ---
 

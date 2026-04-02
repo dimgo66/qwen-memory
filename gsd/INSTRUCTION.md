@@ -2,7 +2,7 @@
 
 ## Установка завершена ✓
 
-GSD адаптирован для работы с Qwen Code в ручном режиме с практиками **Superpowers**.
+GSD адаптирован для работы с Qwen Code в ручном режиме с практиками **Superpowers** и **Beads**.
 
 ## 🆕 Superpowers Integration
 
@@ -12,6 +12,15 @@ GSD адаптирован для работы с Qwen Code в ручном ре
 2. **Code Review** — обязательное ревью перед `gsd:ship`
 3. **Requirements Spec** — уточнение требований до планирования
 4. **Verification Before Completion** — чеклист перед завершением
+
+## 🆕 Beads Integration
+
+**Встроенные практики:**
+
+1. **Dependency Graph** — граф зависимостей между планами
+2. **Ready Check** — авто-определение готовых планов (без блокировок)
+3. **Hash-based ID** — уникальные ID планов (`01-01.a3f8`)
+4. **Compaction** — архивация выполненных фаз с суммаризацией
 
 ## Структура
 
@@ -24,12 +33,14 @@ GSD адаптирован для работы с Qwen Code в ручном ре
 │   ├── new-project.md
 │   ├── requirements-spec.md  ← Уточнение требований
 │   ├── discuss-phase.md
-│   ├── plan-phase.md
-│   ├── execute-phase.md      ← TDD RED-GREEN-REFACTOR
+│   ├── plan-phase.md         ← Hash-based ID + Dependency Graph
+│   ├── execute-phase.md      ← TDD RED-GREEN-REFACTOR + Ready Check
 │   ├── verify-work.md        ← Verification checklist
 │   ├── ship.md               ← Code review перед ship
+│   ├── dependency-graph.md   ← Граф зависимостей + Ready
+│   ├── compact.md            ← Архивация с суммаризацией
+│   ├── progress.md           ← Progress + Ready планы
 │   ├── help.md
-│   ├── progress.md
 │   └── ...
 └── templates/          — Шаблоны файлов
     ├── project.md
@@ -82,6 +93,8 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 
 После инициализации используйте команды:
 
+### Core
+
 | Команда | Описание |
 |---------|----------|
 | `gsd:new-project` | Инициализация проекта |
@@ -91,9 +104,27 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 | `gsd:execute-phase 1` | Выполнение фазы 1 **(TDD)** |
 | `gsd:verify-work` | Проверка работы (UAT + Verification) |
 | `gsd:ship` | Завершение и публикация **(с code review)** |
-| `gsd:progress` | Показать текущий статус |
-| `gsd:help` | Показать все команды |
+
+### Dependency Graph (Beads)
+
+| Команда | Описание |
+|---------|----------|
+| `gsd:dependency-graph 1` | Построить граф зависимостей фазы 1 |
+| `gsd:ready` | Показать готовые планы (без блокировок) |
+| `gsd:progress` | Показать статус + ready планы |
+
+### Archive
+
+| Команда | Описание |
+|---------|----------|
+| `gsd:compact 1` | Архивировать выполненную фазу 1 |
+
+### Quick
+
+| Команда | Описание |
+|---------|----------|
 | `gsd:quick: [задача]` | Быстрая задача |
+| `gsd:help` | Показать все команды |
 
 ## Пример сессии
 
@@ -106,16 +137,28 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 Я: Уточняю требования, создаю acceptance criteria, тест-кейсы...
 
 Вы: gsd:plan-phase 1
-Я: Читаю ROADMAP.md, создаю детальные планы...
+Я: Создаю планы с hash-based ID, строю dependency graph...
+
+Вы: gsd:dependency-graph 1
+Я: Показываю граф, определяю критический путь, bottlenecks...
+
+Вы: gsd:ready
+Я: Показываю планы без блокировок...
 
 Вы: gsd:execute-phase 1
 Я: TDD цикл (RED → GREEN → REFACTOR), обновляю STATE.md...
+
+Вы: gsd:progress
+Я: Показываю статус, dependency graph, ready планы...
 
 Вы: gsd:verify-work
 Я: Проверяю по критериям успеха, запускаю тесты, чеклист...
 
 Вы: gsd:ship
 Я: Code review, создаю коммит, обновляю статусы...
+
+Вы: gsd:compact 1
+Я: Архивирую фазу с суммаризацией...
 ```
 
 ## Файлы проекта
