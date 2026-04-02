@@ -1,6 +1,6 @@
 # GSD для Qwen Code
 
-Адаптированная версия Get Shit Done v1.29.0 для Qwen Code с практиками **Superpowers** и **Beads**.
+Адаптированная версия Get Shit Done v1.29.0 для Qwen Code с практиками **Superpowers**, **Beads** и **Template Bridge**.
 
 ## 🆕 Superpowers Integration
 
@@ -25,6 +25,26 @@
 | **Ready Check** | Авто-определение готовых планов | `gsd:ready` |
 | **Hash-based ID** | Уникальные ID планов | `01-01.a3f8` |
 | **Compaction** | Архивация с суммаризацией | `gsd:compact N` |
+
+---
+
+## 🆕 Template Bridge Integration
+
+**GSD + Template Bridge** — дисциплинированный workflow:
+
+| Практика | Описание | Реализация |
+|----------|----------|------------|
+| **Unified Workflow** | 9-шаговый процесс | `gsd:unified-workflow` |
+| **Template Catalog** | 26+ специализированных ролей | `gsd:template-catalog` |
+| **Git Worktrees** | Изоляция фич | `gsd:using-git-worktrees N` |
+| **Discipline Rules** | Золотые правила | `DISCIPLINE.md` |
+
+**Правила:**
+- ❌ Нет коду без failing-теста
+- ❌ Нет мерджу без review
+- ❌ Нет "готово" без верификации
+- ❌ Нет работы без задачи
+- ✅ Evidence before claims, always
 
 ---
 

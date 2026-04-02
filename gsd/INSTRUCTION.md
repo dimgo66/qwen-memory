@@ -2,7 +2,7 @@
 
 ## Установка завершена ✓
 
-GSD адаптирован для работы с Qwen Code в ручном режиме с практиками **Superpowers** и **Beads**.
+GSD адаптирован для работы с Qwen Code в ручном режиме с практиками **Superpowers**, **Beads** и **Template Bridge**.
 
 ## 🆕 Superpowers Integration
 
@@ -22,24 +22,45 @@ GSD адаптирован для работы с Qwen Code в ручном ре
 3. **Hash-based ID** — уникальные ID планов (`01-01.a3f8`)
 4. **Compaction** — архивация выполненных фаз с суммаризацией
 
+## 🆕 Template Bridge Integration
+
+**Встроенные практики:**
+
+1. **Unified Workflow** — 9-шаговый дисциплинированный процесс
+2. **Template Catalog** — 26+ специализированных ролей (агентов)
+3. **Git Worktrees** — изоляция фич в отдельных worktrees
+4. **Discipline Rules** — золотые правила разработки
+
+**Правила:**
+- ❌ Нет коду без failing-теста
+- ❌ Нет мерджу без review
+- ❌ Нет "готово" без верификации
+- ❌ Нет работы без задачи
+- ✅ Evidence before claims, always
+
 ## Структура
 
 ```
 ~/.qwen/gsd/
 ├── README.md           — Эта инструкция
 ├── INSTRUCTION.md      — Полная инструкция
+├── DISCIPLINE.md       — Золотые правила
 ├── config.json         — Конфигурация
 ├── workflows/          — Воркфлоу команд
 │   ├── new-project.md
-│   ├── requirements-spec.md  ← Уточнение требований
+│   ├── requirements-spec.md    ← Уточнение требований
 │   ├── discuss-phase.md
-│   ├── plan-phase.md         ← Hash-based ID + Dependency Graph
-│   ├── execute-phase.md      ← TDD RED-GREEN-REFACTOR + Ready Check
-│   ├── verify-work.md        ← Verification checklist
-│   ├── ship.md               ← Code review перед ship
-│   ├── dependency-graph.md   ← Граф зависимостей + Ready
-│   ├── compact.md            ← Архивация с суммаризацией
-│   ├── progress.md           ← Progress + Ready планы
+│   ├── plan-phase.md           ← Hash-based ID + Dependency Graph
+│   ├── execute-phase.md        ← TDD RED-GREEN-REFACTOR + Ready Check
+│   ├── verify-work.md          ← Verification checklist
+│   ├── ship.md                 ← Code review перед ship
+│   ├── dependency-graph.md     ← Граф зависимостей + Ready
+│   ├── compact.md              ← Архивация с суммаризацией
+│   ├── progress.md             ← Progress + Ready планы
+│   ├── unified-workflow.md     ← 9-шаговый процесс
+│   ├── template-catalog.md     ← 26+ специализированных ролей
+│   ├── using-git-worktrees.md  ← Изоляция фич
+│   ├── writing-plans.md        ← Tradeoff анализ
 │   ├── help.md
 │   └── ...
 └── templates/          — Шаблоны файлов
@@ -119,6 +140,16 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 |---------|----------|
 | `gsd:compact 1` | Архивировать выполненную фазу 1 |
 
+### Template Bridge
+
+| Команда | Описание |
+|---------|----------|
+| `gsd:unified-workflow` | 9-шаговый дисциплинированный процесс |
+| `gsd:template-catalog` | Каталог 26+ специализированных ролей |
+| `gsd:use-role <name>` | Активировать роль (security-auditor, backend-architect...) |
+| `gsd:using-git-worktrees 1` | Создать worktree для фазы 1 |
+| `gsd:find-role <keyword>` | Найти роль по ключевому слову |
+
 ### Quick
 
 | Команда | Описание |
@@ -136,11 +167,17 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 Вы: gsd:requirements-spec 1
 Я: Уточняю требования, создаю acceptance criteria, тест-кейсы...
 
+Вы: gsd:discuss-phase 1 --analyze
+Я: Исследую компромиссы, создаю tradeoff таблицу...
+
 Вы: gsd:plan-phase 1
 Я: Создаю планы с hash-based ID, строю dependency graph...
 
 Вы: gsd:dependency-graph 1
 Я: Показываю граф, определяю критический путь, bottlenecks...
+
+Вы: gsd:using-git-worktrees 1
+Я: Создаю worktree для изоляции фичи...
 
 Вы: gsd:ready
 Я: Показываю планы без блокировок...
@@ -159,6 +196,15 @@ gsd:new-project: Хочу создать сайт для конкурса фот
 
 Вы: gsd:compact 1
 Я: Архивирую фазу с суммаризацией...
+
+Вы: gsd:unified-workflow
+Я: Показываю полный 9-шаговый процесс...
+
+Вы: gsd:template-catalog
+Я: Показываю каталог 26+ специализированных ролей...
+
+Вы: gsd:use-role security-auditor
+Я: Активирую роль security-auditor с чек-листом...
 ```
 
 ## Файлы проекта
